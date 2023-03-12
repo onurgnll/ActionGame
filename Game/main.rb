@@ -2,6 +2,11 @@ require_relative "player"
 require_relative "inventory"
 require_relative "items"
 require_relative "slots"
+require_relative "market"
+
+market = Market.new
+market.marketEkle($aykilici,20)
+market.marketEkle($ayzirhi,20)
 
 
 #system ("cls")
@@ -33,6 +38,9 @@ while true
     end
     if islem == "2"
         $player.bilgiler
+    end
+    if islem == "4"
+        market.marketGoruntule
     end
     if islem == "3"
         puts "Slot Menüsüne girdiniz"

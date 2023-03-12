@@ -32,15 +32,6 @@ class Player
     def slotOldur(player, slot)
 
         slotdamage = slot.damage - player.defence
-        #if slotdamage == 0
-        #    slotdamage = 0.01
-        #end
-        oyuncuslotuoldurebildi = false
-
-
-
-        
-
         temphp = player.hp
         tempslothp = slot.hp
             while true
@@ -61,13 +52,20 @@ class Player
                 end
                 if temphp < 1
                     puts "Öldünüz!"
+                    sleep(1)
+                    puts "Doğum İçin Kalan Süre... (5)"
+                    sleep(1)
+                    puts "Doğum İçin Kalan Süre... (4)"
+                    sleep(1)
+                    puts "Doğum İçin Kalan Süre... (3)"
+                    sleep(1)
+                    puts "Doğum İçin Kalan Süre... (2)"
+                    sleep(1)
+                    puts "Doğum İçin Kalan Süre... (1)"
+                    puts "Tekrar Canlandınız!"
                     break
 
                 end
-
-
             end
-
-
     end
 end
