@@ -43,12 +43,12 @@ class Inventory
                     if esya.class == Sword
                         $player.damage = esya.damage
                         @playerusedsword = true
-                        @items.delete(esya)
+                        @items.delete_at(secildi-1)
                     end
                     if esya.class == Armor
                         $player.defence = esya.defence
                         @playerusedarmor = true
-                        @items.delete(esya)
+                        @items.delete_at(secildi-1)
                     end
                 elsif islem == 2
                     @items.delete(esya)

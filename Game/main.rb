@@ -29,14 +29,38 @@ puts ""
 puts $player.bilgiler
 while true
 
-    puts "Envanterini Görüntülemek için 1 e bas"
-    puts "bilgiler için 2"
+    puts "1. -> Karakter Bilgilerini Görüntüle"
+    puts "2. -> Envanterini Görüntüle"
+    puts "3. -> Canavar Öldürme"
+    puts "4. -> Marketi Görüntüle"
+    
+    puts "0. Oyundan Çık"
 
     islem = gets.chomp
-    if islem == "1"
-        $player.inventory.lookinv
+    if islem == "9"
+        puts "1. 10000 TL Al"
+        puts "2. Ay Eşyaları Al"
+        puts "3. Güneş Eşyaları Al"
+        puts "4. Baron Eşyaları Al"
+        islemm = gets.to_i
+        if islemm == 1
+            $player.gold = 10000
+        elsif islemm == 2
+            $player.inventory.ekle($aykilici)
+            $player.inventory.ekle($ayzirhi)
+        elsif islemm == 3
+            $player.inventory.ekle($guneskilici)
+            $player.inventory.ekle($guneszirhi)
+        elsif islemm == 4
+            $player.inventory.ekle($baronkilici)
+            $player.inventory.ekle($baronzirhi)
+        end
+
     end
     if islem == "2"
+        $player.inventory.lookinv
+    end
+    if islem == "1"
         $player.bilgiler
     end
     if islem == "4"
@@ -47,8 +71,8 @@ while true
         while true
             puts "Öldürmek İstediğiniz Canavar türünü seçiniz"
             puts "1. Köpekler"
-            puts "2. Fanatikler"
-            puts "3. Orumcekler"
+            puts "2. Fanatikler (Güneş Eşyaları Düşebilir)"
+            puts "3. Orumcekler (Baron Eşyaları Düşebilir)"
             puts "4. Geri Dön"
 
             islem = gets.chomp.to_i

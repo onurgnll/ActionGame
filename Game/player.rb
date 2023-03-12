@@ -47,6 +47,31 @@ class Player
                     puts ""
                     puts slot.gold.to_s + "TL Kazandın"
                     player.gold += slot.gold
+                    
+                    #item drop rates
+                    sans = rand(1..10)
+                    if slot.isim == "Mistik"
+                        if sans < 3
+                            puts "Eşya Elde Edildi (" + $guneskilici.isim + ")"
+                            $player.inventory.ekle($guneskilici)
+                        end
+                        if sans > 8 
+                            puts "Eşya Elde Edildi (" + $guneszirhi.isim + ")"
+                            $player.inventory.ekle($guneszirhi)
+                        end
+                    end
+                    if slot.isim == "Örümcek"
+                        if sans < 2
+                            puts "Eşya Elde Edildi (" + $baronkilici.isim + ")"
+                            $player.inventory.ekle($baronkilici)
+                        end
+                        if sans > 9
+                            puts "Eşya Elde Edildi (" + $baronkilici.isim + ")"
+                            $player.inventory.ekle($baronkilici)
+                        end
+                    end
+
+
                     break
 
                 end

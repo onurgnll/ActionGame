@@ -29,6 +29,7 @@ class Market
         else
             if player.gold >= @marketitems.values[girilen-1]
                 $player.inventory.ekle(@marketitems.keys[girilen-1])
+                $player.gold -= @marketitems.values[girilen-1]
                 puts "ürün satın alındı"
             else
                 puts "Yeterli paranız yok"
