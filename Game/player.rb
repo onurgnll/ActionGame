@@ -32,40 +32,42 @@ class Player
     def slotOldur(player, slot)
 
         slotdamage = slot.damage - player.defence
-        if slotdamage == 0
-            slotdamage = 0.01
-        end
+        #if slotdamage == 0
+        #    slotdamage = 0.01
+        #end
         oyuncuslotuoldurebildi = false
 
 
 
         
-        if slot.hp / player.damage - player.hp / slotdamage < 0
-            oyuncuslotuoldurebildi = true
-        end
 
-        if oyuncuslotuoldurebildi == true
-            puts "Canavar Öldürülüyor " + slot.hp.to_s + "/" + slot.hp.to_s
-            sleep(1)
-            puts "Canavar Öldürülüyor " + (2*slot.hp/3).to_s  + "/" + slot.hp.to_s
-            sleep(1)
-            puts "Canavar Öldürülüyor " + (1*slot.hp/3).to_s + "/" + slot.hp.to_s
-            sleep(1)
-            puts "Canavar Öldürülüyor " + (0).to_s + "/" + slot.hp.to_s
+        temphp = player.hp
+        tempslothp = slot.hp
+            while true
+                nowhp = temphp - slotdamage
+                temphp = nowhp
+                tempslothp = tempslothp - player.damage
+                puts "Canavar'la savaşılıyor"
+                sleep(0.6)
+                puts "    Senin Hp -> " + nowhp.to_s + "/" + 20.to_s
+                puts "    " + slot.isim + " Hpsi -> " + tempslothp.to_s + "/" + slot.hp.to_s
+                sleep(0.6)
+                if tempslothp < 1
+                    puts ""
+                    puts slot.gold.to_s + "TL Kazandın"
+                    player.gold += slot.gold
+                    break
 
-            puts ""
-            puts slot.gold.to_s + "TL Kazandın"
-            player.gold += slot.gold
+                end
+                if temphp < 1
+                    puts "Öldünüz!"
+                    break
 
-        end
-        if oyuncuslotuoldurebildi == false
-            puts "Canavar Öldürülüyor " + slot.hp.to_s + "/" + slot.hp.to_s
-            sleep(1)
-            puts "Canavar Öldürülüyor " + (2*slot.hp/3).to_s  + "/" + slot.hp.to_s
-            sleep(1)
-            puts "Canavar Öldürülüyor " + (1*slot.hp/3).to_s + "/" + slot.hp.to_s
-            sleep(1)
-            puts "Canavar Öldürülemedi Öldün!"
-        end
+                end
+
+
+            end
+
+
     end
 end
