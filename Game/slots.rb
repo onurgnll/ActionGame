@@ -4,20 +4,28 @@ require_relative "items"
 
 class Slots
 
-    attr_reader :damage , :gold , :hp ,:isim
+    attr_reader :damage , :gold , :hp ,:name
 
-    def initialize(isim: ,damage: , gold: , hp:)
+    def initialize(name: ,damage: , gold: , hp:)
         @damage = damage
         @gold = gold
         @hp = hp
-        @isim = isim
+        @name = name
     end
 
 
 end
 
 
-$kopek = Slots.new(isim: "Köpek" , damage: 1, gold: 5 , hp: 3)
-$fanatik = Slots.new(isim: "Mistik" , damage: 10 , gold: 10 ,hp: 8 )
-$orumcek = Slots.new(isim: "Örümcek", damage: 8 , gold: 20 , hp: 15)
+$kopek = Slots.new(name: "Köpek" , damage: 4, gold: 5 , hp: 3)
+$mistik = Slots.new(name: "Mistik" , damage: 6 , gold: 10 ,hp: 8 )
+$orumcek = Slots.new(name: "Örümcek", damage: 9 , gold: 20 , hp: 20)
+$dev= Slots.new(name: "Dev", damage: 14 , gold: 30 , hp: 25)
+$peri= Slots.new(name: "Peri", damage: 20 , gold: 40 , hp: 42)
+
+$dog = Slots.new(name: "Dog" , damage: 4, gold: 5 , hp: 3)
+$mythic = Slots.new(name: "Mythic" , damage: 6 , gold: 10 ,hp: 8 )
+$spider = Slots.new(name: "Spider", damage: 9 , gold: 20 , hp: 20)
+$giant= Slots.new(name: "Giant", damage: 14 , gold: 30 , hp: 25)
+$fairy= Slots.new(name: "Fairy", damage: 20 , gold: 40 , hp: 42)
 
