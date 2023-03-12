@@ -60,7 +60,7 @@ if $dil == 1
         puts "2. -> Envanterini Görüntüle"
         puts "3. -> Canavar Öldürme"
         puts "4. -> Marketi Görüntüle"
-        
+        puts "8. -> Oyun Hakkında Bilgi Al"
         puts "0. -> Oyundan Çık"
     
         islem = gets.chomp
@@ -83,6 +83,15 @@ if $dil == 1
                 $player.inventory.add($baronzirhi)
             end
     
+        end
+        if islem == "8"
+            puts "Action Game'de Amaç Canavar öldürerek gelişmektir"
+            puts "Bir kaç köpek öldürerek marketten Ay Eşyalarını alabilirsiniz"
+            puts "Daha yüksek seviye eşyalar diğer canavarları öldürerek elde edilir"
+            puts "Ana amaç kendini geliştirerek en son seviye zırhı elde etmektir"
+            puts "Dikkat! Bir canavarı öldürebilmek için yeterli defans puanı ve hasar puanınınız olmalıdır"
+            puts "Canavarlardan Bir üst seviye eşyalar rastgele elde edilebilir!."
+            sleep(15)
         end
         if islem == "2"
             $player.inventory.lookinv
@@ -136,10 +145,20 @@ else
         puts "2. -> Shows Inventory"
         puts "3. -> Show monsters to kill"
         puts "4. -> Show shop"
+        puts "8. -> Get information about game"
         
         puts "0. -> Quit Game"
 
         islem = gets.chomp
+        if islem == "8"
+            puts "In Action Game, the aim is to improve by killing monsters."
+            puts "You can get Moon Items from the market by killing a few dogs"
+            puts "Higher level items are obtained by killing other monsters"
+            puts "The main goal is to get the latest level armor by improving yourself."
+            puts "Attention! You must have enough defense points and damage points to kill a monster"
+            puts "Next-level items from monsters can be obtained randomly!."
+            sleep(15)
+        end
         if islem == "2"
             $player.inventory.lookinv
         end
