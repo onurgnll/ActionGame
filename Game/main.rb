@@ -5,7 +5,6 @@ require_relative "slots"
 require_relative "market"
 
 
-
 market = Market.new
 market.marketAddturkce($aykilici,25)
 market.marketAddturkce($ayzirhi,25)
@@ -30,26 +29,44 @@ if $dil == 1
     puts "Başlamak için Karakter Oluşturun"
 
     puts "Oluşturulacak Oyuncunun ismi..."
-    $player = Player.new(name: gets.chomp, damage: 0 , gold: 0 , inventory: Inventory.new , defence: 0)
-    $player.inventory.add($baslangickilic)
-    $player.inventory.add($baslangiczirh)
+    name = gets.chomp
+    filepath = "turkishplayers/" +name +".yml"
+    if File.exists?(filepath)
+        puts "Kayıtlı oyuncu bulundu Oyuna Devam Ediliyor"
+        $player = Marshal.load(File.binread(filepath))
+        sleep(1)
+    else
+        $player = Player.new(name: name, damage: 0 , gold: 0 , inventory: Inventory.new , defence: 0)
+        $player.inventory.add($baslangickilic)
+        $player.inventory.add($baslangiczirh)
+        $playerturkishfile = "turkishplayers/" + $player.name + ".yml"
+        File.open($playerturkishfile, 'wb') {|f| f.write(Marshal.dump($player))}
+        puts $player.name + " Adlı Karakter oluşturuldu Oyuna başlanıyor"
+        sleep(1)
+
+    end
 elsif $dil == 2
     puts "Create a new character to play"
     puts "Enter character's name"
-    $player = Player.new(name: gets.chomp, damage: 0 , gold: 0 , inventory: Inventory.new , defence: 0)
-    $player.inventory.add($startersword)
-    $player.inventory.add($starterarmor)
+    name = gets.chomp
+    filepath = "engplayers/" +name +".yml"
+    if File.exists?(filepath)
+        puts "Found saved a character game is continue"
+        $player = Marshal.load(File.binread(filepath))
+        sleep(1)
+    else
+        $player = Player.new(name: name, damage: 0 , gold: 0 , inventory: Inventory.new , defence: 0)
+        $player.inventory.add($startersword)
+        $player.inventory.add($starterarmor)
+        $playerengfile = "engplayers/" + $player.name  + ".yml"
+        puts $player.name + " named character created the game is starting..."
+        File.open($playerengfile, 'wb') {|f| f.write(Marshal.dump($player))}
+        sleep(1)
+
+    end
 end
 
 
-if $dil == 1
-    puts $player.name + " Adlı Karakter oluşturuldu Oyuna başlanıyor"
-    sleep(1)
-else
-    puts $player.name + " named character created the game is starting..."
-    sleep(1)
-
-end
 
 puts $player.stats
 
@@ -133,6 +150,12 @@ if $dil == 1
             end
         end
         if islem == "0"
+            puts "Oyundan Çıkılıyor"
+            puts "Veriler Kaydediliyor"
+            sil = "turkishplayers/" +$player.name + ".yml"
+            File.delete(sil)
+            
+            File.open(sil, 'wb') {|f| f.write(Marshal.dump($player))}
             break
         end
     end
@@ -178,7 +201,7 @@ else
                 puts "2. Mythics (Sun items can be drop)"
                 puts "3. Spiders (Baron items can be drop)"
                 puts "4. Giants (Knight items can be drop)"
-                puts "3. Fairys (Knight items can be drop)"
+                puts "5. Fairys (Knight items can be drop)"
                 puts "0. Back"
 
                 islem = gets.chomp.to_i
@@ -189,9 +212,9 @@ else
                     $player.killSlots($player , $mythic)
                 elsif islem == 3
                     $player.killSlots($player , $spider)
-                elsif islem == 3
+                elsif islem == 4
                     $player.killSlots($player , $giant)
-                elsif islem == 3
+                elsif islem == 5
                     $player.killSlots($player , $fairy)
                 elsif islem == 0
                     break
@@ -199,6 +222,13 @@ else
             end
         end
         if islem == "0"
+            puts "Quitting game"
+            puts "Datas saving"
+            sil = "engplayers/" +$player.name + ".yml"
+            File.delete(sil)
+            
+            File.open(sil, 'wb') {|f| f.write(Marshal.dump($player))}
+
             break
         end
     end
@@ -207,8 +237,8 @@ end
 
 
 
-#sleep(2)
-#system("cls")
+sleep(2)
+system("cls")
 
 
 
