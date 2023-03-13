@@ -53,10 +53,10 @@ class Player
                 temphp = nowhp
                 tempslothp = tempslothp - player.damage
                 puts "Canavarla savaşılıyor"
-                sleep(0.6)
+                sleep(0.2)
                 puts "    Senin Hp -> " + nowhp.to_s + "/" + 20.to_s
                 puts "    " + slot.name + " Hpsi -> " + tempslothp.to_s + "/" + slot.hp.to_s
-                sleep(0.6)
+                sleep(0.3)
                 if tempslothp < 1
                     puts ""
                     puts slot.gold.to_s + "TL Kazandın"
