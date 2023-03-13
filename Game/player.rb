@@ -192,15 +192,15 @@ class Player
                 if temphp < 1
                     puts "You Died!"
                     sleep(1)
-                    puts "Remains time to respawn... (5)"
+                    puts "Remain time to respawn... (5)"
                     sleep(1)
-                    puts "Remains time to respawn... (4)"
+                    puts "Remain time to respawn... (4)"
                     sleep(1)
-                    puts "Remains time to respawn... (3)"
+                    puts "Remain time to respawn... (3)"
                     sleep(1)
-                    puts "Remains time to respawn... (2)"
+                    puts "Remain time to respawn... (2)"
                     sleep(1)
-                    puts "Remains time to respawn... (1)"
+                    puts "Remain time to respawn... (1)"
                     puts "You Respawned!"
                     break
 
